@@ -8,6 +8,11 @@ st.write("Click START, allow camera access, and check that a live preview appear
 ctx = webrtc_streamer(
     key="camera-test",
     mode=WebRtcMode.SENDRECV,
+        rtc_configuration={
+        "iceServers": [
+            {"urls": ["stun:stun.l.google.com:19302"]}
+        ]
+    },
     video_processor_factory=LiveFaceProcessor,
     media_stream_constraints={"video": True, "audio": False},
     async_processing=True,
